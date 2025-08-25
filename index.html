@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Battle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="container">
+            <div class="welcome-content">
+                <h1 class="game-title" data-translate="title">Alphabet Battle</h1>
+                <p class="game-subtitle" data-translate="subtitle">Compete with friends in this fast-paced word game!</p>
+                
+                <div class="language-selector">
+                    <button id="lang-en" class="btn btn--outline language-btn active">English</button>
+                    <button id="lang-it" class="btn btn--outline language-btn">Italiano</button>
+                </div>
+                
+                <div class="setup-section">
+                    <h3>Players</h3>
+                    <div class="player-setup">
+                        <div class="add-player-form">
+                            <input type="text" id="player-name-input" class="form-control" data-translate-placeholder="playerName" placeholder="Player Name" maxlength="20">
+                            <button id="add-player-btn" class="btn btn--primary" data-translate="addPlayer">Add Player</button>
+                        </div>
+                        <div class="player-list" id="player-list"></div>
+                        <div class="player-count-info">
+                            <span>Players: <span id="player-count">0</span>/6</span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-settings">
+                        <div class="setting-group">
+                            <label class="form-label" data-translate="difficulty">Difficulty</label>
+                            <select id="difficulty-select" class="form-control">
+                                <option value="easy" data-translate="easy">Easy</option>
+                                <option value="normal" data-translate="normal">Normal</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button id="start-game-btn" class="btn btn--primary btn--lg btn--full-width" disabled data-translate="startGame">Start Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="container">
+            <div class="game-header">
+                <div class="round-info">
+                    <span data-translate="round">Round</span> <span id="current-round">1</span>
+                </div>
+                <div class="letter-display">
+                    <span data-translate="letter">Letter</span>
+                    <div class="current-letter" id="current-letter">A</div>
+                </div>
+                <div class="game-timer">
+                    <span id="timer-display">00:00</span>
+                </div>
+            </div>
+            
+            <div class="themes-header">
+                <div class="theme-grid">
+                    <div class="theme-label" data-theme="0" data-translate="themes.0">Name</div>
+                    <div class="theme-label" data-theme="1" data-translate="themes.1">Country</div>
+                    <div class="theme-label" data-theme="2" data-translate="themes.2">City</div>
+                    <div class="theme-label" data-theme="3" data-translate="themes.3">River</div>
+                    <div class="theme-label" data-theme="4" data-translate="themes.4">Vegetable</div>
+                    <div class="theme-label" data-theme="5" data-translate="themes.5">Body Parts</div>
+                    <div class="theme-label" data-theme="6" data-translate="themes.6">Sports</div>
+                    <div class="theme-label" data-theme="7" data-translate="themes.7">Artists</div>
+                    <div class="theme-label" data-theme="8" data-translate="themes.8">Brand</div>
+                </div>
+            </div>
+            
+            <div class="players-grid" id="players-grid"></div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <div class="results-header">
+                <h2 data-translate="results">Round Results</h2>
+                <div class="round-winner" id="round-winner"></div>
+            </div>
+            
+            <div class="results-content">
+                <div class="answers-grid" id="answers-grid"></div>
+                
+                <div class="leaderboard-section">
+                    <h3 data-translate="leaderboard">Leaderboard</h3>
+                    <div class="leaderboard" id="leaderboard"></div>
+                </div>
+                
+                <div class="results-actions">
+                    <button id="next-round-btn" class="btn btn--primary btn--lg" data-translate="nextRound">Next Round</button>
+                    <button id="end-game-btn" class="btn btn--outline btn--lg" data-translate="endGame">End Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Results Screen -->
+    <div id="final-screen" class="screen">
+        <div class="container">
+            <div class="final-content">
+                <h1 data-translate="finalWinner">Game Winner</h1>
+                <div class="final-winner" id="final-winner"></div>
+                <div class="final-leaderboard" id="final-leaderboard"></div>
+                <button id="play-again-btn" class="btn btn--primary btn--lg" data-translate="playAgain">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="letter-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmYdBjuT2fDTeiwF" type="audio/wav">
+    </audio>
+    
+    <script src="app.js"></script>
+</body>
+</html>
